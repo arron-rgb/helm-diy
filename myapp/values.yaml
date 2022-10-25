@@ -1,0 +1,17 @@
+# Default values for demo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 3
+
+web_image:
+  repository: paddlew/csye7125-web
+  tag: latest
+  serect_ref: web-datasource-secret
+  config_ref: web-config
+
+db_image:
+  repository: paddlew/csye7125-db
+  tag: latest
+  serect_ref: flyway-secret
+

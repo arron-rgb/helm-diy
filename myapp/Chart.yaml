@@ -1,0 +1,9 @@
+apiVersion: v2
+name: myapp
+description: A Helm chart for Kubernetes
+type: application
+description: csye7125 group06, Yifan Shao, Tianqi Zhang, Kang Shentu
+sources:
+  - https://github.com/csye7125-fall2022-group06/helmchart
+version: 0.1.0
+appVersion: "1.16.0"

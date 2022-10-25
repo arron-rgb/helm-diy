@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+  labels:
+    app: web
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  minReadySeconds: 30
+  progressDeadlineSeconds: 300
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: web
+          image: "{{ .Values.web_image.repository }}:{{ .Values.web_image.tag }}"
+          ports:
+            - containerPort: 7759
+          envFrom:
+            - secretRef: 
+                name: {{ .Values.web_image.serect_ref }}
+            - configMapRef:
+                name: {{ .Values.web_image.config_ref }}
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 7759
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 7759
+            initialDelaySeconds: 20
+            periodSeconds: 10
+      initContainers:
+      - name: init-db
+        image: "{{ .Values.db_image.repository }}:{{ .Values.db_image.tag }}"
+        envFrom: 
+          - secretRef:
+              name: {{ .Values.db_image.serect_ref }}
