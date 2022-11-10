@@ -1,6 +1,5 @@
 apiVersion: v2
 name: myapp
-description: A Helm chart for Kubernetes
 type: application
 description: csye7125 group06, Yifan Shao, Tianqi Zhang, Kang Shentu
 sources:
