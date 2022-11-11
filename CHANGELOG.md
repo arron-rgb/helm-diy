@@ -1,3 +1,12 @@
+1.2.0
+
+# [1.2.0](https://github.com/csye7125-fall2022-group06/helmchart/compare/v1.1.0...v1.2.0) (2022-11-11)
+
+
+### Features
+
+* test2 ([8e50a61](https://github.com/csye7125-fall2022-group06/helmchart/commit/8e50a61ac05a8bcead9688dba3d6b146fb9c49b9))
+
 # [1.1.0](https://github.com/csye7125-fall2022-group06/helmchart/compare/v1.0.0...v1.1.0) (2022-11-10)
 
 
